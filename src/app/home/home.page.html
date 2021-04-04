@@ -1,8 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Stock Market Graph
-    </ion-title>
+    <ion-title> Stock Market Graph </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,21 +11,41 @@
     <ion-item>
       <ion-label>Stock</ion-label>
       <ion-select placeholder="Select One" [(ngModel)]="stock" value="AAPL">
-        <ion-select-option *ngFor="let curStock of stockList" value={{curStock.symbol}}>{{curStock.name}}</ion-select-option>
+        <ion-select-option
+          *ngFor="let curStock of stockList"
+          value="{{curStock.symbol}}"
+          >{{curStock.name}}</ion-select-option
+        >
       </ion-select>
     </ion-item>
-
   </ion-list>
 
   <ion-item>
-    <ion-input type="text" [(ngModel)]="stock" placeholder="AAPL, MSFT..." disabled></ion-input>
-    <ion-button slot="end" expand="full" (click)="getData()" [disabled]='stock === ""'>
+    <ion-input
+      type="text"
+      [(ngModel)]="stock"
+      placeholder="AAPL, MSFT..."
+      disabled
+    ></ion-input>
+    <ion-button
+      slot="end"
+      expand="full"
+      (click)="getData()"
+      [disabled]='stock === ""'
+    >
       <ion-icon slot="start" name="search"></ion-icon>
       Search
     </ion-button>
   </ion-item>
-  <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType" [legend]="showLegend"
-    [options]="chartOptions" [colors]="chartColors"></canvas>
+  <canvas
+    baseChart
+    [datasets]="chartData"
+    [labels]="chartLabels"
+    [chartType]="chartType"
+    [legend]="showLegend"
+    [options]="chartOptions"
+    [colors]="chartColors"
+  ></canvas>
 
   <ion-card>
     <ion-card-header>
@@ -37,7 +55,6 @@
       <ion-item>
         <ion-label>Line Chart</ion-label>
         <ion-toggle (ionChange)="typeChanged($event)" checked></ion-toggle>
-
       </ion-item>
       <ion-item>
         <ion-label>Show Legend</ion-label>
@@ -45,7 +62,10 @@
       </ion-item>
       <ion-item>
         <ion-label>Background Color</ion-label>
-        <ion-input type="text" [(ngModel)]="chartColors[0].backgroundColor"></ion-input>
+        <ion-input
+          type="text"
+          [(ngModel)]="chartColors[0].backgroundColor"
+        ></ion-input>
       </ion-item>
     </ion-card-content>
   </ion-card>
